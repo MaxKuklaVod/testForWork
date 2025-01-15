@@ -1,4 +1,4 @@
-"Задание номер 1 программирование";
+"Задание номер 1 программирование (20 минут)";
 function numberForCase(a) {
     const zeroEnding = [1];
     const exceptions = [11, 12, 13, 14];
@@ -15,7 +15,7 @@ function numberForCase(a) {
     }
 }
 
-"Задание номер 2 программирование";
+"Задание номер 2 программирование (40 минут)";
 function commonDivisors(array) {
     let length = array.length;
     let arrayDivisors = divisors(array[0]);
@@ -43,7 +43,7 @@ function divisors(a) {
     return divisors.sort((a, b) => a - b);
 }
 
-"Задание номер 3 программирование, используется функция из задания номер 2";
+"Задание номер 3 программирование, используется функция из задания номер 2 (5 минут)";
 function primeNumbers(a, b) {
     let i, arrayPrime = [];
     for (i = a; i <= b; i++) {
@@ -55,7 +55,7 @@ function primeNumbers(a, b) {
 }
 
 
-"Задание номер 4 программирование";
+"Задание номер 4 программирование (10 минут)";
 const Object = {
     multiplicationTable(a){
         row = `\t`
