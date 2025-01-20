@@ -1,39 +1,40 @@
-// Функция взята из документации по Math.random()
+// Функция для генерации случайного целого числа в заданном диапазоне (включительно)
+// Взято из документации по Math.random()
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min); // Максимум и минимум включаются
 }
 
-function secretNum(){
-    let minNum = 0;
-    let maxNum = 100;
-    let flag = false;
-    let num;
-    let count = 0;
-    const randomNum = getRandomIntInclusive(minNum, maxNum);
+// Функция для игры в угадывание числа
+function secretNum() {
+    let minNum = 0; // Минимальное значение
+    let maxNum = 100; // Максимальное значение
+    let attempts = 0; // Счетчик попыток
+    const randomNum = getRandomIntInclusive(minNum, maxNum); // Загаданное число
 
     console.log(`Компьютер 1 загадал число: ${randomNum}`);
 
-    while (flag === false){
-        num = minNum + Math.floor((maxNum - minNum) / 2);
-        count += 1;
-        console.log(`\nПопытка №${count}`);
-        console.log(`Компьютер 2: Пусть будет ${num}`);
+    while (true) { 
+        // Используем бинарный поиск для угадывания числа
+        const guess = Math.floor((minNum + maxNum) / 2); 
 
-        if (num > randomNum){
-            maxNum = num;
+        attempts += 1; // Увеличиваем счетчик попыток
+        console.log(`\nПопытка №${attempts}`);
+        console.log(`Компьютер 2: Пусть будет ${guess}`);
+
+        if (guess > randomNum) {
+            maxNum = guess - 1; // Обновляем максимальное значение
             console.log('Компьютер 1: Меньше');
-        }
-        else if (num < randomNum){
-            minNum = num;
+        } else if (guess < randomNum) {
+            minNum = guess + 1; // Обновляем минимальное значение
             console.log('Компьютер 1: Больше');
-        }
-        else{
+        } else {
             console.log('Компьютер 1: Правильно!');
-            flag = true;
+            break; // Выход из цикла, если число угадано
         }
     }
 }
 
+// Запускаем игру
 secretNum();
